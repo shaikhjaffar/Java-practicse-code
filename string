@@ -1,0 +1,19 @@
+import java.util.*;
+import java.io.*;
+class practicse{
+    public static void main(String[] args) {
+        Scanner sc=new Scanner (System.in) ;
+        System.out.println("ENTER STRING");
+        String A=sc.next();
+        String B=new StringBuilder(A).reverse().toString();
+        System.out.println(B);
+        if(B.equals(A)){
+            System.out.println("Same");
+                }
+                else{
+                    System.out.println("Diffrent");
+                }
+    
+        sc.close();
+    }
+    
