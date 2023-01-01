@@ -1,0 +1,37 @@
+
+function apartmentHunting(blocks, reqs) {
+  let minDistance = Infinity;  // initially we defined the minDistance as infinity 
+  let optimalBlock = -1;         // initially  consider that we dont find optimalBlock(index) therefore we initiallized with -1
+  //Now itterate the array and find the distance of the block 
+  for (let i = 0; i < blocks.length; i++) {
+    let maxDistance = 0; 
+    //itteration through the requested block array 
+    for (let j = 0; j < reqs.length; j++) {
+      let distance = getBuildingDistance(blocks, i, reqs[j]); // finding distance of all the elemnt present in the requested array
+      if (distance > maxDistance) {     // checking the maximum distance by keeping the latest maxdistance as distance 
+        maxDistance = distance;        
+      }
+    }
+    if (maxDistance < minDistance) {   //comparing the maxDistance to minDistance 
+      minDistance = maxDistance;
+      optimalBlock = i;              //returning the index of the minDistanceblock
+    }
+  }
+  return optimalBlock;
+}
+
+function getBuildingDistance(blocks, blockIndex, building) { // function  for finding distance we need array of block, blockindex and indexof requestedlist array for comparing single element  
+  let distance = 0;
+  let found = false;              
+  for (let i = blockIndex; i < blocks.length; i++) {
+    if (blocks[i][building]) {
+      found = true;           
+      break;
+    }
+    distance++;
+  }
+  if (!found) {
+    distance = Infinity;
+  }
+  return distance;
+}
